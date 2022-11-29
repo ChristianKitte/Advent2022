@@ -15,26 +15,26 @@ html {
 --linkcolor: #306f91;
 --bordercolor: #c32e04;
 background-color: var(--bgcolor);
-}
-
-body{
-width: 100%;
 background-image: url(images/background.jpg);
 background-size: cover;
 background-repeat: no-repeat;
 background-position: center center;
 }
 
+body{
+width: 100%;
+}
+
 h1 {
 font-size: 3rem;
 margin: 1rem auto;
 padding: 5rem 0 2rem;
-text-align: center;
+text-align: left;
 }
 
 h1 a {
-color: yellow;
-font-family: "Baskerville Old Face";
+color: crimson;
+font-family: "Comic Sans MS";
 font-size: 1em;
 padding: 6rem 0 2rem calc(126px + 1rem);
 background-position: left center;
@@ -80,6 +80,7 @@ font-size: large;
 color: #fffefe;
 align-content: center;
 width: auto;
+font-family: "Comic Sans MS";
 }
 
 li::after {
