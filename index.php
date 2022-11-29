@@ -32,7 +32,7 @@ endfor; ?>
     <script><?php include('js.php') ?></script>
 </head>
 <body>
-<h1><a href="https://selfhtml.org"><?= $title ?></a></h1>
+<h1><a href="https://advent.ckitte.de/"><?= $title ?></a></h1>
 <ol> <?php
     for ($k = 0; $k < sizeof($listitems); $k++) : ?>
         <li><?= $listitems[$k] ?></li> <?php
