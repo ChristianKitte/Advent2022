@@ -1,47 +1,42 @@
 <?php
-require ('data.php');
+require('data.php');
 
-$year = 2019;
-$title = 'Adventskalender '.$year;
+$year = 2022;
+$title = 'Minion Adventskalender ' . $year;
 
 $now = time();
 $today = date("j");
 $listitems = [];
+
 for ($k = 1; $k <= sizeof($data); $k++) :
-  $allowed = mktime(0,0,0,12,$k,$year);
-  if ($now > $allowed) :
-    $listitems[] = '
-      <a href="'.$data[$k]['href'].'">
-        <h2>'.$data[$k]['heading'].'</h2>
-        <p>'.$data[$k]['author'].'</p>
-        <p>'.$data[$k]['teaser'].'</p>
-      </a>';
-  elseif ($k == $today + 1 || $k == 24) :
-    $listitems[] = '
-      <a class="donate" href="'.$donate['href'].'">
-        <h2>'.$donate['heading'].'</h2>
-        <p>'.$donate['text'].'</p>
-      </a>';
-  else :
-    $listitems[] = '<a class="coming_soon">'.str_replace('##date##',$k,$default).'</a>';
-  endif;
+    $allowed = mktime(0, 0, 0, 12, $k, $year);
+
+    if ($now > $allowed) :
+        $listitems[] = '
+        <img class="content-image" src=images/' . $k . '.jpg>';
+    elseif ($now < $allowed) :
+        $listitems[] = '<a class="coming_soon">' . str_replace('##date##', $k, $default) . '</a>';
+    else :
+        $default = '';
+        $listitems[] = '<a class="coming_soon">' . str_replace('##date##', $k, $default) . '</a>';
+    endif;
 endfor; ?>
 
 <!DOCTYPE html>
 <html lang="de">
-  <head>
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?=$title?></title>
+    <title><?= $title ?></title>
     <style><?php include('css.php') ?></style>
     <script><?php include('js.php') ?></script>
-  </head>
-  <body>
-    <h1><a href="https://selfhtml.org"><?=$title?></a></h1>
-    <ol> <?php 
-      for ($k = 0; $k < sizeof($listitems); $k++) : ?>
-        <li><?=$listitems[$k]?></li> <?php
-      endfor ?>
-    </ol>
-  </body>
+</head>
+<body>
+<h1><a href="https://selfhtml.org"><?= $title ?></a></h1>
+<ol> <?php
+    for ($k = 0; $k < sizeof($listitems); $k++) : ?>
+        <li><?= $listitems[$k] ?></li> <?php
+    endfor ?>
+</ol>
+</body>
 </html>
